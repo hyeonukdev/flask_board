@@ -1,14 +1,12 @@
 [tool.poetry]
 name = "flask_board"
 version = "0.1.0"
-description = "Structure your Flask apps in a scalable and intelligent way using Blueprints."
-authors = ["Todd Birchard <toddbirchard@gmail.com>"]
-maintainers = ["Todd Birchard <toddbirchard@gmail.com>"]
+description = "For make flask_board"
+authors = ["hyeonukdev <lego7407@gmail.com>"]
+maintainers = ["hyeonukdev <lego7407@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://hackersandslackers.com/flask-blueprints/"
-repository = "https://github.com/hackersandslackers/flask-blueprint-tutorial/"
-documentation = "https://hackersandslackers.com/flask-blueprints/"
+repository = "https://github.com/hyeonukdev/flask_board"
 keywords = [
     "Flask",
     "Blueprints",
