@@ -1,0 +1,21 @@
+{% extends "layout.jinja2" %}
+
+{% block pagestyles %}
+  {% assets "profile_less_bundle" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css">
+  {% endassets %}
+{% endblock %}
+
+{% block content %}
+  {% include "navigation.jinja2" %}
+
+  <div class="container">
+    <학생회원>
+    기능 : {{result.guide_function}} <br>
+    상세내용 : {{result.guide_detail}} <br>
+    예시 : {{result.guide_example}} <br>
+  </div>
+
+  {% include "blueprintinfo.jinja2" %}
+
+{% endblock %}

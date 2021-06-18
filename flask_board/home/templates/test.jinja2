@@ -1,0 +1,19 @@
+{% extends "layout.jinja2" %}
+
+{% block pagestyles %}
+  {% assets "profile_less_bundle" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css">
+  {% endassets %}
+{% endblock %}
+
+{% block content %}
+  {% include "navigation.jinja2" %}
+
+  <div class="container">
+   {{result}}
+   {{value}}
+  </div>
+
+  {% include "blueprintinfo.jinja2" %}
+
+{% endblock %}

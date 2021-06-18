@@ -1,10 +1,8 @@
 """Initialize Flask app."""
 from flask import Flask
 from flask_assets import Environment
-from ddtrace import patch_all
-
-
-patch_all()
+# from ddtrace import patch_all
+# patch_all()
 
 
 def init_app():
@@ -18,11 +16,15 @@ def init_app():
         # Import parts of our application
         from .assets import compile_static_assets
         from .home import home
+        from .about import about
         from .profile import profile
+        from .qna import qna
 
         # Register Blueprints
-        app.register_blueprint(profile.profile_bp)
         app.register_blueprint(home.home_bp)
+        app.register_blueprint(about.about_bp)
+        app.register_blueprint(profile.profile_bp)
+        app.register_blueprint(qna.qna_bp)
 
         # Compile static assets
         compile_static_assets(assets)

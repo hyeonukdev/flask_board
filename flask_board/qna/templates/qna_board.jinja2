@@ -1,0 +1,30 @@
+{% extends "layout.jinja2" %}
+
+{% block pagestyles %}
+  {% assets "profile_less_bundle" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css">
+  {% endassets %}
+{% endblock %}
+
+{% block content %}
+  {% include "navigation.jinja2" %}
+
+  <div class="container">
+    <게시판>
+    {% for board in result.boards %}
+      <hr>
+      <li> {{board.no}} </li>
+      <li> {{board.title}} </li>
+      <li> {{board.author}} </li>
+      <li> {{board.date}} </li>
+      <li> {{board.status}} </li>
+      <li> {{board.attachment}} </li>
+      <br>
+    {% endfor %}
+
+
+  </div>
+
+  {% include "blueprintinfo.jinja2" %}
+
+{% endblock %}

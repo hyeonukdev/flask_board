@@ -43,6 +43,19 @@ def contact():
     )
 
 
-@home_bp.route("/test", methods=["POST"])
-def test():
-    return {"result":"ok"}
+@home_bp.route("/gtest", methods=["GET"])
+def gtest():
+    result = "ok"
+    value = "test"
+    return render_template('test.jinja2', result=result, value=value, )
+
+
+@home_bp.route("/ptest", methods=["POST"])
+def ptest():
+    text = "ok"
+    value = "test"
+    result = {
+        "text":text,
+        "value":value
+    }
+    return result
