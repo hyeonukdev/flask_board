@@ -1,13 +1,31 @@
 """General page routes."""
 from flask import Blueprint
+from flask import Flask,  url_for
 from flask import current_app as app
 from flask import render_template
-
+import operator
 
 # Blueprint Configuration
 home_bp = Blueprint(
     "home_bp", __name__, template_folder="templates", static_folder="static"
 )
+
+
+
+@app.route("/site-map")
+def site_map():
+    'Display registered routes'
+    rules = []
+    for rule in app.url_map.iter_rules():
+        methods = ','.join(sorted(rule.methods))
+        rules.append((rule.endpoint, methods, str(rule)))
+
+    sort_by_rule = operator.itemgetter(2)
+    for endpoint, methods, rule in sorted(rules, key=sort_by_rule):
+        route = '{:25s} {:25s} {}'.format(endpoint, methods, rule)
+        print(route)
+
+    return render_template("all_links.html", rules=rules)
 
 
 @home_bp.route("/", methods=["GET"])
@@ -59,3 +77,4 @@ def ptest():
         "value":value
     }
     return result
+

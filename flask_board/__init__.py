@@ -1,18 +1,26 @@
 """Initialize Flask app."""
+import os
 from flask import Flask
 from flask_assets import Environment
-# from ddtrace import patch_all
-# patch_all()
+from flask_sqlalchemy import SQLAlchemy
 
 
 def init_app():
     """Create Flask application."""
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object("config.Config")
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///my.sqlite3'
+    app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SECRET_KEY'] = 'flask board'
+
+    db = SQLAlchemy(app)
+
     assets = Environment()
     assets.init_app(app)
-
     with app.app_context():
+        db.create_all()
         # Import parts of our application
         from .assets import compile_static_assets
         from .home import home

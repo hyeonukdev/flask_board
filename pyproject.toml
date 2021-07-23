@@ -11,8 +11,7 @@ keywords = [
     "Flask",
     "Blueprints",
     "Framework",
-    "Python",
-    "Tutorial"
+    "Python"
 ]
 
 [tool.poetry.dependencies]
